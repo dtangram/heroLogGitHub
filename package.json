@@ -1,0 +1,58 @@
+{
+  "name": "HeroLog",
+  "version": "1.0.0",
+  "description": "[DESCRIPTION OF YOUR PROJECT]",
+  "engines": {
+    "node": "11.2.0"
+  },
+  "main": ".eslintrc.js",
+  "proxy": "http://localhost:5000",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react": "cd reactjs && npm run start",
+    "start": "npm start nodemon server.js --prefix api",
+    "dev:react": "concurrently --raw \"npm run start\" \"npm run react\"",
+    "install-reactjs": "npm install --prefix reactjs",
+    "install-api": "npm install --prefix api",
+    "build-reactjs": "npm run build --prefix reactjs",
+    "build-api": "npm run db-update --prefix api",
+    "heroku-postbuild": "concurrently \"npm:install-*\"; concurrently \"npm:build-*\";"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.14.0",
+    "eslint-plugin-react-app": "^5.0.1",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "nodemon": "^1.19.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "babel-eslint": "^10.0.1",
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "react": "^16.8.6"
+  }
+}
