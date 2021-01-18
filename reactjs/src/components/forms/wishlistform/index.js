@@ -88,8 +88,8 @@ class WishListForm extends React.Component {
             // AWS Rekognition to use params to filter out inappropritate images
             aws.config.update({
               region: 'us-east-2',
-              accessKeyId: 'AKIAX6ZHFRPEDJCJPDOG',
-              secretAccessKey: '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',
+              accessKeyId: process.env.REACT_APP_AWSAccessKeyId,
+              secretAccessKey: process.env.REACT_APP_AWSSecretKey,
             });
 
             const S3_BUCKET = 'dothanthorntonbucket';
