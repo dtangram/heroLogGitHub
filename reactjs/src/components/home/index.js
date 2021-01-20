@@ -30,6 +30,13 @@ class Home extends React.Component {
   componentDidMount() {
     const { fetchALLSales, match: { params: { id } } } = this.props;
     fetchALLSales(id);
+
+    // await API.get('/salelistALL/').then((res) => {
+    //   const userMessIds = res.map(userMessId => userMessId.saleUsersId);
+    //   this.setState({ userMessIds });
+    //   console.log('ID: ', res.map(userMessId => userMessId.saleUsersId));
+    // });
+
     // this simulates an async action, after which the component will render the content
     // const demoAsyncCall = () => new Promise(resolve => setTimeout(() => resolve(), 2500));
     // this.demoAsyncCall().then(() => this.setState({ isLoading: false }));
@@ -96,6 +103,8 @@ class Home extends React.Component {
             <h2>Comics for Sale</h2>
             <figure className={styles.graphic} alt="Small burgandy, rectangle graphic." />
 
+            <p><RRLink to={`/viewMessages/${userId}`} className="link">View Your Messages</RRLink></p>
+
             <Container fluid className={styles.container}>
               <Row className={styles.row}>
                 {
@@ -138,7 +147,7 @@ class Home extends React.Component {
                       }
 
                       <article>
-                        <RRLink to={`/forms/messaging/${userId}`}><img src={questionanswer} alt="Thought bubble 1" /></RRLink>
+                        <RRLink to={`/forms/messaging/${saleHome.saleUsersId}`}><img src={questionanswer} alt="Thought bubble 1" /></RRLink>
                         <p>Send a message to the owner of this comic book.</p>
                       </article>
                     </Col>

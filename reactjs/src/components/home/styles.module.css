@@ -74,9 +74,19 @@
   flex-wrap: nowrap;
 } */
 
-.comicSaleWrapper h2{
+.comicSaleWrapper h2, .comicSaleWrapper p a{
   color: #2B2B2B;
   margin-top: 5%;
+}
+
+.comicSaleWrapper p{
+  margin: 0 auto 50px;
+  text-align: center;
+  width: 190px;
+}
+
+.comicSaleWrapper p a:hover{
+  color: #770422;
 }
 
 .comicSaleWrapper > .container{

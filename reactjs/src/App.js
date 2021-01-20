@@ -16,6 +16,7 @@ import Signin from './components/forms/signin';
 import Home from './components/home';
 import Dashboard from './components/dashboard';
 import ModalMessage from './components/forms/messaging';
+import ViewMessages from './components/viewMessages';
 import ComicBookList from './components/dashboard/comicbooklist';
 import ComicBookListIssues from './components/dashboard/comicbooklistissues';
 import CreatePublisher from './components/forms/createpublisher';
@@ -47,6 +48,7 @@ class App extends Component {
             <PrivateRouteHandler path="/" exact component={Home} />
             <PrivateRouteHandler path="/dashboard/:userId" exact component={Dashboard} />
             <PrivateRouteHandler path="/forms/messaging/:userId" exact component={ModalMessage} />
+            <PrivateRouteHandler path="/viewMessages/:userId" exact component={ViewMessages} />
             <PrivateRouteHandler path="/forms/createpublisher/new/:userId" exact component={CreatePublisher} />
             <PrivateRouteHandler path="/forms/createpublisher/edit/:id" exact component={CreatePublisher} />
             <PrivateRouteHandler path="/dashboard/:pubId/comicbooklist" exact component={ComicBookList} />
