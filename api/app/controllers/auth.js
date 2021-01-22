@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
     const secret = process.env.JWT_SECRET || 'JWT SECRET';
 
     // Fixer API
-    const url = 'http://data.fixer.io/api/latest?access_key=38f19fa0be4e3e2be7c164a3e024fb26';
+    const url = `http://data.fixer.io/api/latest?access_key=${process.env.FixerAccessID}`;
 
     const { data } = await axios({
       method: 'get',
