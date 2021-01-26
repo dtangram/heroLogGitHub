@@ -2,6 +2,8 @@ import React from 'react';
 import { Link as RRLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BeatLoader } from 'react-spinners';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Link from '../../link';
 import Empty from '../empty/empty';
 // import '../../../css/main.css';
@@ -64,12 +66,20 @@ class Dashboard extends React.Component {
 
                 {!isLoading && publishers.length > 0
                   && publishers.map(publisher => (
-                    <p key={publisher.id}>
-                      <RRLink to={`/dashboard/${publisher.id}/comicbooklist`} className={styles.link}>{publisher.publisherName}</RRLink>
-                      <br />
-                      <Link url={`/forms/createpublisher/edit/${publisher.id}`} title="Edit" />
-                      <button type="submit" onClick={() => this.delete(publisher.id)}>Delete</button>
-                    </p>
+                    <section key={publisher.id}>
+                      <p>
+                        <RRLink to={`/dashboard/${publisher.id}/${publisher.publisherName}/comicbooklist`} className={styles.link}>{publisher.publisherName}</RRLink>
+                      </p>
+
+                      <section className={styles.editStyle}>
+                        <figure><EditIcon /></figure>
+                        <p className={styles.link}><Link url={`/forms/createpublisher/edit/${publisher.id}`} title="Edit" /></p>
+                      </section>
+                      <button className={styles.deleteStyle} type="submit" onClick={() => this.delete(publisher.id)}>
+                        <figure><DeleteIcon /></figure>
+                        <p>Delete</p>
+                      </button>
+                    </section>
                   ))}
               </article>
             </section>

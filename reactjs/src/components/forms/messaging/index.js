@@ -11,13 +11,9 @@ class ModalMessage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
       message: '',
       successMessage: '',
       formErrors: {
-        name: '',
-        email: '',
         message: '',
       },
     };
@@ -68,17 +64,16 @@ class ModalMessage extends React.Component {
         params: { id },
       },
     } = this.props;
-    const { name, email, message } = this.state;
+    const { message } = this.state;
 
     const isValid = this.validateFields();
 
-    const userId = localStorage.getItem('id');
+    const { match: { params: { userId, username, userEmail } } } = this.props;
 
-    if (!id && isValid && name.length >= 3 && message.length >= 10
-      && email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+    if (!id && isValid && message.length >= 10) {
       createMessaging({
-        name,
-        email,
+        name: username,
+        email: userEmail,
         message,
         messageUsersId: userId,
       }).then(() => this.setState({ successMessage: 'success' }));
@@ -92,85 +87,58 @@ class ModalMessage extends React.Component {
 
   async validateFields(fieldName, value) {
     const {
-      name,
-      email,
       message,
     } = this.state;
 
-    const currentNameValid = name.length >= 3;
-    const currentEmailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
     const currentMessageValid = message.length >= 10;
 
     this.setState({
       formErrors: {
-        publisherName: currentNameValid ? '' : 'Name is required',
-        email: currentEmailValid ? '' : 'Email is required',
         message: currentMessageValid ? '' : 'Message is required',
       },
     });
 
-    return currentNameValid && currentEmailValid && currentMessageValid;
+    return currentMessageValid;
   }
 
   render() {
-    const { match: { params: { userId } } } = this.props;
-
     const {
+      match: { params: { comicBookTitle, username, userEmail } },
       messaging: {
-        name: defaultName = '',
-        email: defaultEmail = '',
+        name = `${username}`,
+        email = `${userEmail}`,
         message: defaultMessage = '',
       },
-      messagings,
     } = this.props;
 
     const {
-      name = defaultName,
-      email = defaultEmail,
       message = defaultMessage,
       formErrors,
       successMessage,
     } = this.state;
 
-    const currentMessagingsData = messagings[userId] || {};
-    const { allIds = [], byId = {} } = currentMessagingsData;
-
-    // turn the array of ids into an array of objects
-    const currentMessagings = allIds.map(id => byId[id].data);
-
     return (
       <React.Fragment>
-        <article>
+        <article id="cbMessage" className={styles.cbWrapper}>
+          <h1>
+            Send Message About &nbsp;
+            {comicBookTitle}
+            <figure className={styles.graphic} alt="Small burgandy, rectangle graphic." />
+          </h1>
+
           <article className={styles.cbList}>
-            <h2 className={styles.cbModalH2}>Sent Messages</h2>
-
-            <article className={styles.messageSent}>
-              {currentMessagings.map(fetchMessages => (
-                <p key={fetchMessages.id}>
-                  {fetchMessages.name}
-                  <br />
-                  {fetchMessages.email}
-                  <br />
-                  {fetchMessages.message}
-                </p>
-              ))}
-            </article>
-
             {successMessage === 'success' ? <SuccessDisplay /> : null}
 
             <section className={styles.wrapper}>
               <form method="POST" onSubmit={this.save}>
-                <h2 className={styles.cbModalH2}>Send a Message</h2>
-
                 <FormErrors formErrors={formErrors} />
 
                 <article>
                   <fieldset>
                     <label htmlFor="name">
-                      Name
+                      From
 
                       <input
-                        ref={(input) => { this.inputFocus = input; }}
                         id="name"
                         className={styles.inputBorder}
                         type="text"
@@ -194,6 +162,7 @@ class ModalMessage extends React.Component {
                     </label>
 
                     <textarea
+                      ref={(input) => { this.inputFocus = input; }}
                       id="message"
                       type="text"
                       name="message"

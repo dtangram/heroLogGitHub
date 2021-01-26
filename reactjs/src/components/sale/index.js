@@ -3,6 +3,9 @@ import { Link as RRLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
 import { BeatLoader } from 'react-spinners';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Link from '../../link';
 import Empty from '../empty/empty';
 import '../../css/main.css';
@@ -61,9 +64,17 @@ class Sale extends React.Component {
             <div className="graphic" alt="Small burgandy, rectangle graphic." />
           </h1>
 
+          <h2>
+            <section>
+              <RRLink to={`/forms/saleform/new/${userId}`}>
+                <figure><LibraryAddIcon /></figure>
+                <p className="link">Add Comic to Sale</p>
+              </RRLink>
+            </section>
+          </h2>
+
           <div className="cbList">
             <section>
-              <h2><RRLink to={`/forms/saleform/new/${userId}`} className="link">Add Comic to Sale</RRLink></h2>
               <article>
                 {currentSales.length === 0 && !isLoading ? <Empty /> : <Empty /> === null}
 
@@ -121,10 +132,16 @@ class Sale extends React.Component {
                             {sale.type}
                           </p>
 
-                          <p>
-                            <Link className="link" url={`/forms/saleform/edit/${sale.id}`} title="Edit" />
-                            <button type="submit" onClick={() => this.delete(sale.id)}>Delete</button>
-                          </p>
+                          <section>
+                            <section className="editStyle">
+                              <figure><EditIcon /></figure>
+                              <p className="link"><Link className="link" url={`/forms/saleform/edit/${sale.id}`} title="Edit" /></p>
+                            </section>
+                            <button className="deleteStyle" type="submit" onClick={() => this.delete(sale.id)}>
+                              <figure><DeleteIcon /></figure>
+                              <p>Delete</p>
+                            </button>
+                          </section>
                         </section>
                       </article>
                     </section>

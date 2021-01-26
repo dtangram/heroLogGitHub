@@ -21,12 +21,15 @@ body {
 .loader {
   background: #2B2B2B;
   height: 3000px;
-  padding-top: 300px;
+  padding-top: 400px;
   position: fixed;
   text-align: center;
   top: 0;
   width: 100%;
   z-index: 6000; }
+  @media (max-width: 1440px) {
+    .loader {
+      padding-top: 300px; } }
 
 .loader > section {
   display: inline-block;
@@ -314,9 +317,12 @@ section {
     line-height: 105px;
     position: absolute;
     text-align: center;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1; }
+    @media (max-width: 1440px) {
+      #root > section:nth-child(2) h1 {
+        top: 40%; } }
     @media (max-width: 1199px) {
       #root > section:nth-child(2) h1 {
         font-size: 3.5em;
@@ -505,7 +511,8 @@ section.comicSaleWrapper {
     section.comicSaleWrapper article .row {
       display: flex;
       flex-direction: row;
-      justify-content: space-around; }
+      justify-content: space-around;
+      margin-left: 0; }
       section.comicSaleWrapper article .row .cardWrap {
         margin: 0 auto 80px;
         text-align: center; }
@@ -997,7 +1004,7 @@ section.comicSaleWrapper {
 
 /* Removed from CSS Module and added here for responsive behavior because style wouldn't respond to screen sizes
 while in CSS Module */
-#cbComBookList, #cbSale, #cbWishList {
+#cbComBookListIssues, #cbSale, #cbWishList, #cbVeiwMessage {
   background: #FFF;
   margin-top: 150px;
   min-height: 950px;
@@ -1005,9 +1012,9 @@ while in CSS Module */
   margin-bottom: 150px;
   width: 100%; }
   @media (max-width: 320px) {
-    #cbComBookList, #cbSale, #cbWishList {
+    #cbComBookListIssues, #cbSale, #cbWishList, #cbVeiwMessage {
       margin-top: 80px; } }
-  #cbComBookList h1, #cbSale h1, #cbWishList h1 {
+  #cbComBookListIssues h1, #cbSale h1, #cbWishList h1, #cbVeiwMessage h1 {
     color: #2B2B2B;
     font-size: 5rem;
     margin-bottom: 50px;
@@ -1015,43 +1022,73 @@ while in CSS Module */
     width: 100%;
     top: 30px; }
     @media (max-width: 500px) {
-      #cbComBookList h1, #cbSale h1, #cbWishList h1 {
+      #cbComBookListIssues h1, #cbSale h1, #cbWishList h1, #cbVeiwMessage h1 {
         font-size: 3.5rem;
         top: 0; } }
-  #cbComBookList h1 .graphic, #cbSale h1 .graphic, #cbWishList h1 .graphic {
+  #cbComBookListIssues h1 .graphic, #cbSale h1 .graphic, #cbWishList h1 .graphic, #cbVeiwMessage h1 .graphic {
     background: #770422;
     margin: 15px auto 0;
     height: 10px;
     width: 70px; }
-  #cbComBookList > h2, #cbSale > h2, #cbWishList > h2 {
+  #cbComBookListIssues > h2, #cbSale > h2, #cbWishList > h2, #cbVeiwMessage > h2 {
+    line-height: normal;
     margin-top: 0; }
-  #cbComBookList section:nth-child(4), #cbSale section:nth-child(4), #cbWishList section:nth-child(4) {
+    #cbComBookListIssues > h2 > section, #cbSale > h2 > section, #cbWishList > h2 > section, #cbVeiwMessage > h2 > section {
+      display: inline-block;
+      min-height: auto;
+      padding: 0;
+      width: auto; }
+      #cbComBookListIssues > h2 > section a, #cbSale > h2 > section a, #cbWishList > h2 > section a, #cbVeiwMessage > h2 > section a {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly; }
+        #cbComBookListIssues > h2 > section a:hover, #cbSale > h2 > section a:hover, #cbWishList > h2 > section a:hover, #cbVeiwMessage > h2 > section a:hover {
+          color: #770422; }
+      #cbComBookListIssues > h2 > section a figure :nth-child(1), #cbSale > h2 > section a figure :nth-child(1), #cbWishList > h2 > section a figure :nth-child(1), #cbVeiwMessage > h2 > section a figure :nth-child(1) {
+        color: #770422;
+        font-size: 2.5rem; }
+      #cbComBookListIssues > h2 > section a p, #cbSale > h2 > section a p, #cbWishList > h2 > section a p, #cbVeiwMessage > h2 > section a p {
+        color: #2B2B2B;
+        font-size: 3rem;
+        margin: 0;
+        padding: 0; }
+        #cbComBookListIssues > h2 > section a p:hover, #cbSale > h2 > section a p:hover, #cbWishList > h2 > section a p:hover, #cbVeiwMessage > h2 > section a p:hover {
+          color: #770422; }
+  #cbComBookListIssues > h2 section a figure, #cbComBookListIssues .comicWrap .paraWrap > section .editStyle figure,
+  #cbComBookListIssues .comicWrap .paraWrap > section .deleteStyle figure, #cbSale > h2 section a figure, #cbSale .comicWrap .paraWrap > section .editStyle figure,
+  #cbSale .comicWrap .paraWrap > section .deleteStyle figure, #cbWishList > h2 section a figure, #cbWishList .comicWrap .paraWrap > section .editStyle figure,
+  #cbWishList .comicWrap .paraWrap > section .deleteStyle figure, #cbVeiwMessage > h2 section a figure, #cbVeiwMessage .comicWrap .paraWrap > section .editStyle figure,
+  #cbVeiwMessage .comicWrap .paraWrap > section .deleteStyle figure {
+    margin: 0 10px 0 0;
+    padding: 0; }
+  #cbComBookListIssues section:nth-child(4), #cbSale section:nth-child(4), #cbWishList section:nth-child(4), #cbVeiwMessage section:nth-child(4) {
     background: transparent; }
-  #cbComBookList .cbList > h3, #cbSale .cbList > h3, #cbWishList .cbList > h3 {
+  #cbComBookListIssues .cbList > h3, #cbSale .cbList > h3, #cbWishList .cbList > h3, #cbVeiwMessage .cbList > h3 {
     font-size: 2rem;
     margin-bottom: 20px;
     text-align: center;
     text-transform: capitalize; }
-  #cbComBookList .cbList section, #cbSale .cbList section, #cbWishList .cbList section {
+  #cbComBookListIssues .cbList section, #cbSale .cbList section, #cbWishList .cbList section, #cbVeiwMessage .cbList section {
     color: #000;
     display: inline-block;
     height: auto;
     margin-bottom: 50px;
     padding-top: 0;
     text-align: center; }
-    #cbComBookList .cbList section h2, #cbSale .cbList section h2, #cbWishList .cbList section h2 {
+    #cbComBookListIssues .cbList section h2, #cbSale .cbList section h2, #cbWishList .cbList section h2, #cbVeiwMessage .cbList section h2 {
       display: inline-block;
       line-height: normal; }
       @media (max-width: 500px) {
-        #cbComBookList .cbList section h2, #cbSale .cbList section h2, #cbWishList .cbList section h2 {
+        #cbComBookListIssues .cbList section h2, #cbSale .cbList section h2, #cbWishList .cbList section h2, #cbVeiwMessage .cbList section h2 {
           font-size: 2.7rem;
           padding-left: 2%;
           padding-right: 2%; } }
-    #cbComBookList .cbList section h2 a, #cbSale .cbList section h2 a, #cbWishList .cbList section h2 a {
+    #cbComBookListIssues .cbList section h2 a, #cbSale .cbList section h2 a, #cbWishList .cbList section h2 a, #cbVeiwMessage .cbList section h2 a {
       color: #000; }
-      #cbComBookList .cbList section h2 a:hover, #cbSale .cbList section h2 a:hover, #cbWishList .cbList section h2 a:hover {
+      #cbComBookListIssues .cbList section h2 a:hover, #cbSale .cbList section h2 a:hover, #cbWishList .cbList section h2 a:hover, #cbVeiwMessage .cbList section h2 a:hover {
         color: #770422; }
-    #cbComBookList .cbList section > article, #cbSale .cbList section > article, #cbWishList .cbList section > article {
+    #cbComBookListIssues .cbList section > article, #cbSale .cbList section > article, #cbWishList .cbList section > article, #cbVeiwMessage .cbList section > article {
       align-items: center;
       border-radius: 15px;
       display: flex;
@@ -1062,37 +1099,37 @@ while in CSS Module */
       margin: auto;
       padding: 20px 2%; }
       @media (max-width: 800px) {
-        #cbComBookList .cbList section > article, #cbSale .cbList section > article, #cbWishList .cbList section > article {
+        #cbComBookListIssues .cbList section > article, #cbSale .cbList section > article, #cbWishList .cbList section > article, #cbVeiwMessage .cbList section > article {
           padding: 20px 1%;
           width: 100%; } }
-      #cbComBookList .cbList section > article .loadMessageWrap, #cbSale .cbList section > article .loadMessageWrap, #cbWishList .cbList section > article .loadMessageWrap {
+      #cbComBookListIssues .cbList section > article .loadMessageWrap, #cbSale .cbList section > article .loadMessageWrap, #cbWishList .cbList section > article .loadMessageWrap, #cbVeiwMessage .cbList section > article .loadMessageWrap {
         display: flex;
         flex-direction: column;
         text-align: center; }
         @media (max-width: 800px) {
-          #cbComBookList .cbList section > article .loadMessageWrap, #cbSale .cbList section > article .loadMessageWrap, #cbWishList .cbList section > article .loadMessageWrap {
+          #cbComBookListIssues .cbList section > article .loadMessageWrap, #cbSale .cbList section > article .loadMessageWrap, #cbWishList .cbList section > article .loadMessageWrap, #cbVeiwMessage .cbList section > article .loadMessageWrap {
             margin-top: 100px; } }
-      #cbComBookList .cbList section > article .loadMessageWrap > section, #cbSale .cbList section > article .loadMessageWrap > section, #cbWishList .cbList section > article .loadMessageWrap > section {
+      #cbComBookListIssues .cbList section > article .loadMessageWrap > section, #cbSale .cbList section > article .loadMessageWrap > section, #cbWishList .cbList section > article .loadMessageWrap > section, #cbVeiwMessage .cbList section > article .loadMessageWrap > section {
         width: 200px; }
-      #cbComBookList .cbList section > article .loadMessageWrap > section img, #cbSale .cbList section > article .loadMessageWrap > section img, #cbWishList .cbList section > article .loadMessageWrap > section img {
+      #cbComBookListIssues .cbList section > article .loadMessageWrap > section img, #cbSale .cbList section > article .loadMessageWrap > section img, #cbWishList .cbList section > article .loadMessageWrap > section img, #cbVeiwMessage .cbList section > article .loadMessageWrap > section img {
         opacity: .2;
         width: 100%; }
-      #cbComBookList .cbList section > article .loadMessageWrap > .loadWrap, #cbSale .cbList section > article .loadMessageWrap > .loadWrap, #cbWishList .cbList section > article .loadMessageWrap > .loadWrap {
+      #cbComBookListIssues .cbList section > article .loadMessageWrap > .loadWrap, #cbSale .cbList section > article .loadMessageWrap > .loadWrap, #cbWishList .cbList section > article .loadMessageWrap > .loadWrap, #cbVeiwMessage .cbList section > article .loadMessageWrap > .loadWrap {
         align-items: baseline;
         display: flex;
         flex-direction: row; }
-      #cbComBookList .cbList section > article .loadMessageWrap p.loadMessage, #cbSale .cbList section > article .loadMessageWrap p.loadMessage, #cbWishList .cbList section > article .loadMessageWrap p.loadMessage {
+      #cbComBookListIssues .cbList section > article .loadMessageWrap p.loadMessage, #cbSale .cbList section > article .loadMessageWrap p.loadMessage, #cbWishList .cbList section > article .loadMessageWrap p.loadMessage, #cbVeiwMessage .cbList section > article .loadMessageWrap p.loadMessage {
         color: #2B2B2B;
         font-size: 4rem;
         padding: 3% 0; }
-      #cbComBookList .cbList section > article .comicSec, #cbSale .cbList section > article .comicSec, #cbWishList .cbList section > article .comicSec {
+      #cbComBookListIssues .cbList section > article .comicSec, #cbSale .cbList section > article .comicSec, #cbWishList .cbList section > article .comicSec, #cbVeiwMessage .cbList section > article .comicSec {
         background: transparent;
         margin-bottom: 30px;
         width: 500px; }
         @media (max-width: 800px) {
-          #cbComBookList .cbList section > article .comicSec, #cbSale .cbList section > article .comicSec, #cbWishList .cbList section > article .comicSec {
+          #cbComBookListIssues .cbList section > article .comicSec, #cbSale .cbList section > article .comicSec, #cbWishList .cbList section > article .comicSec, #cbVeiwMessage .cbList section > article .comicSec {
             width: 100%; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap, #cbSale .cbList section > article .comicSec .comicWrap, #cbWishList .cbList section > article .comicSec .comicWrap {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap, #cbSale .cbList section > article .comicSec .comicWrap, #cbWishList .cbList section > article .comicSec .comicWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap {
           display: block;
           height: auto;
           margin: 0 auto;
@@ -1100,14 +1137,14 @@ while in CSS Module */
           position: relative;
           width: auto; }
           @media (max-width: 800px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap, #cbSale .cbList section > article .comicSec .comicWrap, #cbWishList .cbList section > article .comicSec .comicWrap {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap, #cbSale .cbList section > article .comicSec .comicWrap, #cbWishList .cbList section > article .comicSec .comicWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap {
               padding: 0 1%;
               width: 100%; } }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap, #cbSale .cbList section > article .comicSec .comicWrap, #cbWishList .cbList section > article .comicSec .comicWrap {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap, #cbSale .cbList section > article .comicSec .comicWrap, #cbWishList .cbList section > article .comicSec .comicWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap {
               display: flex;
               flex-direction: column; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .comicImgWrap {
           background: #AECEAB;
           border-radius: 15px;
           display: flex;
@@ -1120,16 +1157,16 @@ while in CSS Module */
           width: 215px;
           z-index: 10; }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .comicImgWrap {
               left: 0;
               margin-bottom: 15px;
               position: relative;
               top: 0;
               z-index: 1; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .comicImgWrap img, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap img, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap img {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .comicImgWrap img, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap img, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap img, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .comicImgWrap img {
           margin: auto;
           width: 100%; }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap {
           background: #770422;
           border-radius: 15px;
           display: inline-block;
@@ -1143,34 +1180,34 @@ while in CSS Module */
           text-align: left;
           width: 100%; }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap {
               height: auto;
               overflow: visible;
               padding: 16px 5%;
               text-align: center; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-track {
           -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #F5F5F5;
           border-radius: 10px; }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar {
           width: 10px;
           background-color: #025d88; }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap::-webkit-scrollbar-thumb {
           border-radius: 10px;
           background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #3E1142), color-stop(0.72, #3E1142), color-stop(0.86, #3E1142)); }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p {
           font-size: 1.6rem;
           line-height: initial;
           margin-bottom: 1.2rem;
           padding-right: 2%; }
           @media (max-width: 800px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p {
               font-size: 1.5rem; } }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p {
               font-size: 1.6rem;
               padding-left: 2%; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > :last-child {
           align-items: center;
           display: flex;
           flex-direction: row;
@@ -1178,98 +1215,130 @@ while in CSS Module */
           margin-bottom: 0;
           margin-top: 16px; }
           @media (max-width: 800px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > :last-child {
               font-size: 1.5rem;
               justify-content: normal;
               margin-top: 25px; } }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > :last-child, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > :last-child {
               font-size: 1.6rem;
               justify-content: space-evenly; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p > span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p > span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p > span {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p > span {
           font-size: 1.7rem;
           font-weight: bold;
           margin-right: 2%; }
           @media (max-width: 800px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p > span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p > span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p > span {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p > span {
               font-size: 1.5rem; } }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p > span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p > span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p > span {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p > span, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p > span {
               font-size: 1.6rem; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p a, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p a, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p a {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p a, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p a, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p a, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p a {
           color: #AECEAB;
           font-size: 2rem; }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p a:hover::after, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p a:hover::after, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p a:hover::after {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover::after, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover::after, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover::after, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover::after {
           background: #AECEAB;
           width: 80%; }
         @media (max-width: 800px) {
-          #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p a span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p a span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p a span {
+          #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p a span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p a span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p a span, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p a span {
             padding-right: 30px; } }
         @media (max-width: 500px) {
-          #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p a span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p a span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p a span {
+          #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p a span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p a span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p a span, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p a span {
             padding-right: 0; } }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p a:hover, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p a:hover, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p a:hover {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > p a:hover {
           color: #AECEAB; }
-        #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p button, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p button, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p button {
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap section, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap section, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap section, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap section {
+          margin-bottom: 0;
+          padding-right: 3%; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle {
+          align-items: center;
+          display: flex;
+          flex-direction: row; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p {
+          margin: 0;
+          padding: 0; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1),
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure :nth-child(1), #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1),
+        #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure :nth-child(1), #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1),
+        #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure :nth-child(1), #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span,
+        #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1),
+        #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure :nth-child(1) {
+          font-size: 1.7rem; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure,
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure,
+        #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure,
+        #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure,
+        #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle figure, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p {
+          line-height: normal; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle {
+          align-items: center;
+          background: transparent;
+          min-height: auto;
+          padding-top: 0;
+          width: auto; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle a:hover::after, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle a:hover::after, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle a:hover::after, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle a:hover::after {
+          background: #AECEAB;
+          width: 80%; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1), #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1), #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1), #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle figure :nth-child(1), #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .editStyle span {
+          color: #AECEAB; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle {
           background: #AECEAB;
           border: 1px solid #D0D2D3;
           border-radius: 4px;
           color: #770422;
           cursor: pointer;
-          display: inline-block;
           font-size: 1.5rem;
+          justify-content: center;
           margin: 0;
           padding: 5px 0;
           text-align: center;
           width: 100px; }
           @media (max-width: 500px) {
-            #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap p button, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap p button, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap p button {
+            #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle {
               font-size: 1.6rem; } }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover p {
+          color: #AECEAB; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle:hover {
+          background: #2B2B2B; }
+        #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbSale .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbWishList .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .paraWrap > section .deleteStyle p {
+          color: #770422; }
 
 @media (max-width: 500px) {
-  #cbComBookList {
+  #cbComBookListIssues {
     margin-top: 125px; } }
 
 @media (max-width: 320px) {
-  #cbComBookList {
+  #cbComBookListIssues {
     margin-top: 110px; } }
 
-#cbComBookList > button {
+#cbComBookListIssues > button {
   margin-left: 7%; }
   @media (max-width: 800px) {
-    #cbComBookList > button {
+    #cbComBookListIssues > button {
       margin-left: 3%; } }
 
-#cbComBookList > h2 {
-  line-height: normal;
-  margin-top: 0;
-  text-align: center; }
-
-#cbComBookList > h2 section {
-  display: inline-block;
-  padding: 0;
-  width: auto; }
-
-#cbComBookList > h2 section a {
-  color: #2B2B2B; }
-  #cbComBookList > h2 section a:hover {
-    color: #770422; }
-
-#cbComBookList .cbList section > article .comicSec {
+#cbComBookListIssues .cbList section > article .comicSec {
   width: 600px; }
   @media (max-width: 800px) {
-    #cbComBookList .cbList section > article .comicSec {
+    #cbComBookListIssues .cbList section > article .comicSec {
       width: 100%; } }
-  #cbComBookList .cbList section > article .comicSec .comicWrap .comicImgWrap {
+  #cbComBookListIssues .cbList section > article .comicSec .comicWrap .comicImgWrap {
     height: 400px;
     width: 281px; }
-  #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap {
+  #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap {
     height: 350px; }
     @media (max-width: 800px) {
-      #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap {
+      #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap {
         padding-left: 65%; } }
     @media (max-width: 500px) {
-      #cbComBookList .cbList section > article .comicSec .comicWrap .paraWrap {
+      #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap {
         padding: 16px 5%; } }
 
 /* FOOTER =============================== */

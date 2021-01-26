@@ -55,7 +55,7 @@ class ViewMessages extends React.Component {
 
     return (
       <React.Fragment>
-        <div id="cbSale">
+        <div id="cbVeiwMessage">
           <h1>
             Your Messages
             <div className="graphic" alt="Small burgandy, rectangle graphic." />

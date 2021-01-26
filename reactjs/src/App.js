@@ -47,14 +47,14 @@ class App extends Component {
           <Switch>
             <PrivateRouteHandler path="/" exact component={Home} />
             <PrivateRouteHandler path="/dashboard/:userId" exact component={Dashboard} />
-            <PrivateRouteHandler path="/forms/messaging/:userId" exact component={ModalMessage} />
+            <PrivateRouteHandler path="/forms/messaging/:userId/:comicBookTitle/:username/:userEmail" exact component={ModalMessage} />
             <PrivateRouteHandler path="/viewMessages/:userId" exact component={ViewMessages} />
             <PrivateRouteHandler path="/forms/createpublisher/new/:userId" exact component={CreatePublisher} />
             <PrivateRouteHandler path="/forms/createpublisher/edit/:id" exact component={CreatePublisher} />
-            <PrivateRouteHandler path="/dashboard/:pubId/comicbooklist" exact component={ComicBookList} />
+            <PrivateRouteHandler path="/dashboard/:pubId/:publisherName/comicbooklist" exact component={ComicBookList} />
             <PrivateRouteHandler path="/forms/:pubId/comicbooklisttitle/new" exact component={ComicBookListTitle} />
             <PrivateRouteHandler path="/forms/:pubId/comicbooklisttitle/edit/:id" exact component={ComicBookListTitle} />
-            <PrivateRouteHandler path="/dashboard/:coboTitleId/comicbooklistissues" exact component={ComicBookListIssues} />
+            <PrivateRouteHandler path="/dashboard/:coboTitleId/:cbTitle/comicbooklistissues" exact component={ComicBookListIssues} />
             <PrivateRouteHandler path="/forms/:coboTitleId/comicbook/new" exact component={ComicBook} />
             <PrivateRouteHandler path="/forms/:coboTitleId/comicbook/edit/:id" exact component={ComicBook} />
             <PrivateRouteHandler path="/fixer/:userId" exact component={Fixer} />

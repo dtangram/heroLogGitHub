@@ -35,6 +35,12 @@
     }
   }
 
+  @else if $size == large1440{
+    @media(max-width: 1440px){
+      @content;
+    }
+  }
+
   @else if $size == large{
     @media(min-width: 1200px){
       @content;

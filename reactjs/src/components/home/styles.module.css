@@ -14,7 +14,7 @@
   line-height: 105px;
   position: absolute;
   text-align: center;
-  top: 40%;
+  top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
@@ -74,18 +74,36 @@
   flex-wrap: nowrap;
 } */
 
-.comicSaleWrapper h2, .comicSaleWrapper p a{
+.comicSaleWrapper h2{
   color: #2B2B2B;
   margin-top: 5%;
 }
 
-.comicSaleWrapper p{
+.comicSaleWrapper .viewMess a{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin: 0 auto 50px;
   text-align: center;
-  width: 190px;
+  width: 250px;
 }
 
-.comicSaleWrapper p a:hover{
+.comicSaleWrapper .viewMess a figure, .comicSaleWrapper .viewMess a p{
+  margin: 0;
+  padding: 0;
+}
+
+.comicSaleWrapper .viewMess a figure :nth-child(1){
+  color: #770422;
+  font-size: 2.5rem;
+}
+
+.comicSaleWrapper .viewMess a p{
+  color: #2B2B2B;
+}
+
+.comicSaleWrapper .viewMess a p:hover{
   color: #770422;
 }
 
@@ -170,23 +188,36 @@
   display: flex;
   flex-direction: row;
   height: auto;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .comicSaleWrapper > .container .row .issueWrap > article a{
   background: transparent;
-  margin: 0;
+  margin: 0 20px 0 0;
   min-height: auto;
   padding: 0;
-  width: 100px;
+  /* width: 100px; */
 }
 
-.comicSaleWrapper > .container .row .issueWrap > article a img{
-  width: 70%;
+.comicSaleWrapper > .container .row .issueWrap > article a figure{
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.comicSaleWrapper > .container .row .issueWrap > article a figure :nth-child(1){
+  color: #770422;
+  font-size: 4rem;
 }
 
 .comicSaleWrapper > .container .row .issueWrap > article p{
   margin-bottom: 0;
+}
+
+@media (max-width: 1440px){
+  .homeSection section h1{
+    top: 40%;
+  }
 }
 
 @media (max-width: 1199px){

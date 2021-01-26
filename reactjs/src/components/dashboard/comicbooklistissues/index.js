@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
 import { Link as RRLink, withRouter } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Link from '../../../link';
 import Empty from '../../empty/empty';
 import '../../../css/main.css';
@@ -10,7 +13,7 @@ import styles from './styles.module.css';
 import container from './container';
 import logo from '../../../img/logo.png';
 
-class ComicBookList extends React.Component {
+class ComicBookListIssues extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +45,10 @@ class ComicBookList extends React.Component {
   }
 
   render() {
-    const { comicbooklistissues, history, match: { params: { coboTitleId } } } = this.props;
+    const {
+      comicbooklistissues,
+      match: { params: { coboTitleId, cbTitle } },
+    } = this.props;
 
     const currentComicbooklistissueData = comicbooklistissues[coboTitleId] || {};
     const { allIds = [], byId = {}, isLoading } = currentComicbooklistissueData;
@@ -52,15 +58,24 @@ class ComicBookList extends React.Component {
 
     return (
       <React.Fragment>
-        <article id="cbComBookList">
-          <button className={styles.backLink} type="button" onClick={() => history.goBack()}>Back</button>
+        <article id="cbComBookListIssues">
+          <button className={styles.backLink} type="button" onClick={() => this.goBack()}>Back</button>
 
           <h1>
-            Your List of Comic Issues
+            Your List of&nbsp;
+            {cbTitle}
+            &nbsp;Comics
             <figure className="graphic" alt="Small burgandy, rectangle graphic." />
           </h1>
 
-          <h2><section><RRLink to={`/forms/${coboTitleId}/comicbook/new`} className="link">Add Comic Book</RRLink></section></h2>
+          <h2>
+            <section>
+              <RRLink to={`/forms/${coboTitleId}/comicbook/new`}>
+                <figure><LibraryAddIcon /></figure>
+                <p className="link">Add Comic Book</p>
+              </RRLink>
+            </section>
+          </h2>
 
           <article className="cbList">
             {
@@ -141,10 +156,16 @@ class ComicBookList extends React.Component {
                             {comicbookListProp.type}
                           </p>
 
-                          <p>
-                            <Link className="link" url={`/forms/${coboTitleId}/comicbook/edit/${comicbookListProp.id}`} title="Edit" />
-                            <button type="submit" onClick={() => this.delete(comicbookListProp.id)}>Delete</button>
-                          </p>
+                          <section>
+                            <section className="editStyle">
+                              <figure><EditIcon /></figure>
+                              <p className="link"><Link className="link" url={`/forms/${coboTitleId}/comicbook/edit/${comicbookListProp.id}`} title="Edit" /></p>
+                            </section>
+                            <button className="deleteStyle" type="submit" onClick={() => this.delete(comicbookListProp.id)}>
+                              <figure><DeleteIcon /></figure>
+                              <p>Delete</p>
+                            </button>
+                          </section>
                         </section>
                       </article>
                     </section>
@@ -158,7 +179,7 @@ class ComicBookList extends React.Component {
   }
 }
 
-ComicBookList.propTypes = {
+ComicBookListIssues.propTypes = {
   fetchComicBooks: PropTypes.func.isRequired,
   comicbooklistissues: PropTypes.shape({
     // id: PropTypes.string,
@@ -176,8 +197,8 @@ ComicBookList.propTypes = {
   match: RRPropTypes.match.isRequired,
 };
 
-ComicBookList.defaultProps = {
+ComicBookListIssues.defaultProps = {
   comicbooklistissues: {},
 };
 
-export default withRouter(container(ComicBookList));
+export default withRouter(container(ComicBookListIssues));

@@ -56,9 +56,9 @@ button a{
   margin-top: 0;
 }
 
-.cbWrap section{
+/* .cbWrap section{
   min-height: 450px;
-}
+} */
 
 .cbWrap section:nth-child(2), .cbWrap section:nth-child(3){
   background: #AECEAB;
@@ -132,23 +132,30 @@ button a{
   width: 100%;
 } */
 
-.cbWrap .cbList .wrapper article p{
-  padding: 0 1% 3rem;
+.cbWrap .cbList .wrapper article section{
+  background: transparent;
+  padding-top: 0;
+  width: auto;
+}
+
+.cbWrap .cbList .wrapper article section p{
+  padding: 0 0 3rem;
+  /* padding: 0 1% 3rem; */
   text-align: center;
 }
 
-.cbWrap .cbList .wrapper article p a{
+.cbWrap .cbList .wrapper article section p a{
   font-size: 1.5rem;
   color: #AECEAB;
   margin: 0;
 }
 
-.cbWrap .cbList .wrapper article p a:nth-child(1){
+.cbWrap .cbList .wrapper article section p:nth-child(1) a{
   color: #FFF;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
 }
 
-.cbWrap .cbList .wrapper article p a:hover{
+.cbWrap .cbList .wrapper article section p a:hover{
   color: #AECEAB;
 }
 
@@ -174,9 +181,73 @@ button a{
   width: 10%;
 }
 
-.cbWrap .cbList .wrapper article p a:hover::after{
+.cbWrap .cbList .wrapper article section p a:hover::after{
   background: #AECEAB;
+  width: 90%;
+}
+
+.cbWrap .cbList .wrapper article section p:nth-child(1) a:hover::after{
   width: 30%;
+}
+
+.cbWrap .cbList .wrapper article section .editStyle, .cbWrap .cbList .wrapper article section .deleteStyle{
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cbWrap .cbList .wrapper article section .editStyle figure,
+.cbWrap .cbList .wrapper article section .deleteStyle figure{
+  margin: 0 10px 0 0;
+  padding: 0;
+}
+
+.cbWrap .cbList .wrapper article section .editStyle p, .cbWrap .cbList .wrapper article section .editStyle span,
+.cbWrap .cbList .wrapper article section .deleteStyle p{
+  margin: 0;
+  padding: 0;
+}
+
+.cbWrap .cbList .wrapper article section .editStyle p, .cbWrap .cbList .wrapper article section .editStyle span,
+.cbWrap .cbList .wrapper article section .deleteStyle p, .cbWrap .cbList .wrapper article section .editStyle figure :nth-child(1),
+.cbWrap .cbList .wrapper article section .deleteStyle figure :nth-child(1){
+  font-size: 1.7rem;
+}
+
+.cbWrap .cbList .wrapper article section .editStyle{
+  align-items: center;
+  min-height: auto;
+  padding-top: 0;
+}
+
+.cbWrap .cbList .wrapper article section .editStyle figure :nth-child(1){
+  color: #AECEAB;
+}
+
+.cbWrap .cbList .wrapper article section button.deleteStyle{
+  background: #AECEAB;
+  border: 1px solid #D0D2D3;
+  border-radius: 4px;
+  color: #770422;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 10px auto 3rem;
+  padding: 5px 0;
+  text-align: center;
+  width: 100px;
+}
+
+.cbWrap .cbList .wrapper article section button.deleteStyle:hover, .cbWrap .cbList .wrapper article section .deleteStyle:hover p{
+  color: #AECEAB;
+}
+
+.cbWrap .cbList .wrapper article section button.deleteStyle:hover{
+  background: #2B2B2B;
+}
+
+.cbWrap .cbList .wrapper article section .deleteStyle p{
+  color: #770422;
 }
 
 .cbWrap .cbList .wrapper > h2{
@@ -254,7 +325,7 @@ button a{
   text-align: center;
 } */
 
-.cbWrap .cbList .wrapper article p button{
+/* .cbWrap .cbList .wrapper article p button{
   background: #AECEAB;
   border: 1px solid #D0D2D3;
   border-radius: 4px;
@@ -270,7 +341,7 @@ button a{
 
 .cbWrap .cbList .wrapper article p button:hover{
   color: #770422;
-}
+} */
 
 @media (max-width: 500px){
   .cbWrap h1{

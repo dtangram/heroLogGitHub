@@ -4,9 +4,11 @@ import RRPropTypes from 'react-router-prop-types';
 import { Container, Row, Col } from 'reactstrap';
 import { Link as RRLink } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import MessageIcon from '@material-ui/icons/Message';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import EmptySalesHomepage from '../emptySalesHomepage/emptySalesHomepage';
 // import { BeatLoader } from 'react-spinners';
-import questionanswer from '../../img/question_answer.png';
+// import questionanswer from '../../img/question_answer.png';
 import '../../css/main.css';
 import styles from './styles.module.css';
 import logo from '../../img/logo.png';
@@ -69,8 +71,6 @@ class Home extends React.Component {
       window.location.reload();
     }
 
-    console.log('Sales: ', salesALL);
-
     // const { isLoading } = this.state;
     //
     // if (isLoading !== false) {
@@ -103,7 +103,12 @@ class Home extends React.Component {
             <h2>Comics for Sale</h2>
             <figure className={styles.graphic} alt="Small burgandy, rectangle graphic." />
 
-            <p><RRLink to={`/viewMessages/${userId}`} className="link">View Your Messages</RRLink></p>
+            <article className={styles.viewMess}>
+              <RRLink to={`/viewMessages/${userId}`}>
+                <figure><MessageIcon /></figure>
+                <p className="link">View Your Messages</p>
+              </RRLink>
+            </article>
 
             <Container fluid className={styles.container}>
               <Row className={styles.row}>
@@ -147,7 +152,9 @@ class Home extends React.Component {
                       }
 
                       <article>
-                        <RRLink to={`/forms/messaging/${saleHome.saleUsersId}`}><img src={questionanswer} alt="Thought bubble 1" /></RRLink>
+                        <RRLink to={`/forms/messaging/${saleHome.saleUsersId}/${saleHome.comicBookTitle}/${user.username}/${user.email}`}>
+                          <figure className="link"><QuestionAnswerIcon /></figure>
+                        </RRLink>
                         <p>Send a message to the owner of this comic book.</p>
                       </article>
                     </Col>
@@ -178,6 +185,8 @@ Home.propTypes = {
   user: PropTypes.shape({
     id: PropTypes.string,
     firstname: PropTypes.string,
+    username: PropTypes.string,
+    email: PropTypes.string,
   }),
   isLoading: PropTypes.bool.isRequired,
   match: RRPropTypes.match.isRequired,
