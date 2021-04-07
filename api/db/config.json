@@ -9,7 +9,7 @@
   "production": {
     "use_env_variable": "DATABASE_URL"
   },
-  "staging": {
+  "main": {
     "use_env_variable": "DATABASE_URL"
   }
 }
