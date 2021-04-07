@@ -9,7 +9,7 @@ const API = axios.create({
   // baseURL: process.env.DATABASE_URL || 'http://localhost:5000',
 
   // For Heroku Staging
-  // baseURL: 'https://hero-log.herokuapp.com/',
+  baseURL: 'https://herolog.herokuapp.com/',
 
   // For Heroku Production
   // baseURL: 'https://hero-log-production.herokuapp.com/',
@@ -18,7 +18,7 @@ const API = axios.create({
   // baseURL: process.env.API_URL || 'https://endpoint.yourcode.app/dtangram/api',
 
   // For localhosting on Port 4000 for database
-  baseURL: process.env.API_URL || 'http://localhost:4000',
+  // baseURL: process.env.API_URL || 'http://localhost:4000',
 });
 
 API.interceptors.response.use(
