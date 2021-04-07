@@ -1148,13 +1148,13 @@ while in CSS Module */
           background: #AECEAB;
           border-radius: 15px;
           display: flex;
-          height: 300px;
+          height: 340px;
           left: 5%;
           margin-bottom: 0;
-          padding: 30px;
+          padding: 23px;
           position: absolute;
           top: -27px;
-          width: 215px;
+          width: 230px;
           z-index: 10; }
           @media (max-width: 500px) {
             #cbComBookListIssues .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbSale .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbWishList .cbList section > article .comicSec .comicWrap .comicImgWrap, #cbVeiwMessage .cbList section > article .comicSec .comicWrap .comicImgWrap {
@@ -1171,7 +1171,7 @@ while in CSS Module */
           border-radius: 15px;
           display: inline-block;
           font-size: 1.6rem;
-          height: 250px;
+          height: 290px;
           line-height: 40px;
           margin-bottom: 30px;
           overflow-y: auto;
@@ -1330,16 +1330,130 @@ while in CSS Module */
     #cbComBookListIssues .cbList section > article .comicSec {
       width: 100%; } }
   #cbComBookListIssues .cbList section > article .comicSec .comicWrap .comicImgWrap {
-    height: 400px;
+    height: 417px;
     width: 281px; }
   #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap {
-    height: 350px; }
+    height: 370px; }
     @media (max-width: 800px) {
       #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap {
         padding-left: 65%; } }
     @media (max-width: 500px) {
       #cbComBookListIssues .cbList section > article .comicSec .comicWrap .paraWrap {
         padding: 16px 5%; } }
+
+#cbVeiwMessage > .cbList > section {
+  display: inline-block; }
+
+#cbVeiwMessage .cbList .viewMessage {
+  align-items: center;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* height: auto; */
+  justify-content: space-evenly;
+  margin: auto;
+  padding: 20px 2%;
+  text-align: left;
+  /* width: 80%; */ }
+  #cbVeiwMessage .cbList .viewMessage article {
+    background: #770422;
+    border-radius: 15px;
+    color: #2B2B2B;
+    display: block;
+    margin-bottom: 30px;
+    padding: 16px 1%; }
+    #cbVeiwMessage .cbList .viewMessage article p {
+      color: #FFF;
+      font-size: 1.8rem;
+      line-height: 23px;
+      margin-bottom: 20px; }
+    #cbVeiwMessage .cbList .viewMessage article p span {
+      font-size: 2rem;
+      font-weight: bold; }
+    #cbVeiwMessage .cbList .viewMessage article > p:nth-child(5) {
+      background: #FFF;
+      color: #2B2B2B;
+      font-size: 1.8rem;
+      height: 200px;
+      margin-bottom: 30px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 3% 2%;
+      white-space: pre-line;
+      width: 350px; }
+    #cbVeiwMessage .cbList .viewMessage article > p:nth-child(5)::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #F5F5F5;
+      border-radius: 10px; }
+    #cbVeiwMessage .cbList .viewMessage article > p:nth-child(5)::-webkit-scrollbar {
+      width: 10px;
+      background-color: #025d88; }
+    #cbVeiwMessage .cbList .viewMessage article > p:nth-child(5)::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #3E1142), color-stop(0.72, #3E1142), color-stop(0.86, #3E1142)); }
+    #cbVeiwMessage .cbList .viewMessage article > section {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 0;
+      text-align: left; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle, #cbVeiwMessage .cbList .viewMessage article > section button {
+        align-items: center;
+        display: flex;
+        flex-direction: row; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle p, #cbVeiwMessage .cbList .viewMessage article > section .replyStyle span, #cbVeiwMessage .cbList .viewMessage article > section .deleteStyle p {
+        margin: 0;
+        padding: 0; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle p, #cbVeiwMessage .cbList .viewMessage article > section .replyStyle span, #cbVeiwMessage .cbList .viewMessage article > section .deleteStyle p, #cbVeiwMessage .cbList .viewMessage article > section .replyStyle figure :nth-child(1),
+      #cbVeiwMessage .cbList .viewMessage article > section .deleteStyle figure :nth-child(1) {
+        font-size: 1.7rem; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle p, #cbVeiwMessage .cbList .viewMessage article > section .replyStyle figure, #cbVeiwMessage .cbList .viewMessage article > section .deleteStyle figure, #cbVeiwMessage .cbList .viewMessage article > section .deleteStyle p {
+        line-height: normal; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle {
+        align-items: center;
+        background: transparent;
+        margin-bottom: 0;
+        min-height: auto;
+        padding-top: 0;
+        width: auto; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle figure {
+        margin: 0 10px 0 0;
+        padding: 0; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle a:hover::after {
+        background: #AECEAB;
+        width: 80%; }
+      #cbVeiwMessage .cbList .viewMessage article > section .replyStyle figure :nth-child(1), #cbVeiwMessage .cbList .viewMessage article > section .replyStyle span {
+        color: #AECEAB; }
+      #cbVeiwMessage .cbList .viewMessage article > section button {
+        background: #AECEAB;
+        border: 1px solid #D0D2D3;
+        border-radius: 4px;
+        color: #770422;
+        cursor: pointer;
+        float: right;
+        font-size: 1.5rem;
+        justify-content: center;
+        margin: 0;
+        padding: 5px 0;
+        width: 100px; }
+        @media (max-width: 500px) {
+          #cbVeiwMessage .cbList .viewMessage article > section button {
+            font-size: 1.6rem; } }
+      #cbVeiwMessage .cbList .viewMessage article > section button:hover, #cbVeiwMessage .cbList .viewMessage article > section button:hover p {
+        color: #AECEAB; }
+      #cbVeiwMessage .cbList .viewMessage article > section button:hover {
+        background: #2B2B2B; }
+      #cbVeiwMessage .cbList .viewMessage article > section button figure, #cbVeiwMessage .cbList .viewMessage article > section button p {
+        line-height: normal; }
+      #cbVeiwMessage .cbList .viewMessage article > section button figure {
+        margin: 0 10px 0 0;
+        padding: 0; }
+      #cbVeiwMessage .cbList .viewMessage article > section button p {
+        color: #770422;
+        margin: 0;
+        padding: 0; }
 
 /* FOOTER =============================== */
 footer {

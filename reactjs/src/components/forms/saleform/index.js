@@ -17,6 +17,7 @@ class SaleForm extends React.Component {
     super(props);
     this.state = {
       comicBookTitle: '',
+      comicIssue: undefined,
       comicBookVolume: undefined,
       comicBookYear: undefined,
       comicBookPublisher: undefined,
@@ -238,7 +239,7 @@ class SaleForm extends React.Component {
       // history,
     } = this.props;
     const {
-      comicBookTitle, comicBookVolume, comicBookYear, comicBookPublisher, type,
+      comicBookTitle, comicIssue, comicBookVolume, comicBookYear, comicBookPublisher, type,
       comicBookCover,
     } = this.state;
 
@@ -250,6 +251,7 @@ class SaleForm extends React.Component {
       updateSale({
         id,
         comicBookTitle,
+        comicIssue,
         comicBookVolume,
         comicBookYear,
         comicBookPublisher,
@@ -259,6 +261,7 @@ class SaleForm extends React.Component {
     } else if (!id && comicBookTitle.length >= 1 && type) {
       createSale({
         comicBookTitle,
+        comicIssue,
         comicBookVolume,
         comicBookYear,
         comicBookPublisher,
@@ -324,6 +327,7 @@ class SaleForm extends React.Component {
       sale: {
         id,
         comicBookTitle: defaultComicBookTitle = '',
+        comicIssue: defaultComicIssue = '',
         comicBookVolume: defaultComicBookVolume = '',
         comicBookYear: defaultComicBookYear = '',
         comicBookPublisher: defaultComicBookPublisher = '',
@@ -334,6 +338,7 @@ class SaleForm extends React.Component {
 
     const {
       comicBookTitle = defaultComicBookTitle,
+      comicIssue = defaultComicIssue,
       comicBookVolume = defaultComicBookVolume,
       comicBookYear = defaultComicBookYear,
       comicBookPublisher = defaultComicBookPublisher,
@@ -401,17 +406,29 @@ class SaleForm extends React.Component {
                     </label>
 
                     <label htmlFor="comicBookTitle">
-                      Title & Issue Number
+                      Title
 
                       <input
                         ref={(input) => { this.inputFocus = input; }}
                         id="comicBookTitle"
                         className={styles.inputBorder}
-                        placeholder="Example: Amazing Spider-Man #300"
                         type="text"
                         name="comicBookTitle"
                         value={comicBookTitle}
                         onChange={this.handleInputChange}
+                      />
+                    </label>
+
+                    <label htmlFor="comicIssue">
+                      Issue
+
+                      <input
+                        id="comicIssue"
+                        className={styles.inputBorder}
+                        type="number"
+                        name="comicIssue"
+                        value={comicIssue}
+                        onChange={event => this.numInputChange(event, 'comicIssue')}
                       />
                     </label>
 
@@ -506,6 +523,7 @@ SaleForm.propTypes = {
   sale: PropTypes.shape({
     id: PropTypes.string,
     comicBookTitle: PropTypes.string,
+    comicIssue: PropTypes.number,
     comicBookVolume: PropTypes.number,
     comicBookYear: PropTypes.number,
     comicBookPublisher: PropTypes.string,

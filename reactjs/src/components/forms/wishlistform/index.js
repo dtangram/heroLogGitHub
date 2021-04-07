@@ -17,6 +17,7 @@ class WishListForm extends React.Component {
     super(props);
     this.state = {
       comicBookTitle: '',
+      comicIssue: undefined,
       comicBookVolume: undefined,
       comicBookYear: undefined,
       comicBookPublisher: undefined,
@@ -227,7 +228,7 @@ class WishListForm extends React.Component {
       // history,
     } = this.props;
     const {
-      comicBookTitle, comicBookVolume, comicBookYear, comicBookPublisher,
+      comicBookTitle, comicIssue, comicBookVolume, comicBookYear, comicBookPublisher,
       comicBookCover, type,
     } = this.state;
 
@@ -239,6 +240,7 @@ class WishListForm extends React.Component {
       updateWishList({
         id,
         comicBookTitle,
+        comicIssue,
         comicBookVolume,
         comicBookYear,
         comicBookPublisher,
@@ -248,6 +250,7 @@ class WishListForm extends React.Component {
     } else if (!id && comicBookTitle.length >= 1 && type) {
       createWishList({
         comicBookTitle,
+        comicIssue,
         comicBookVolume,
         comicBookYear,
         comicBookPublisher,
@@ -301,6 +304,7 @@ class WishListForm extends React.Component {
       wishlist: {
         id,
         comicBookTitle: defaultComicBookTitle = '',
+        comicIssue: defaultComicIssue = '',
         comicBookVolume: defaultComicBookVolume = '',
         comicBookYear: defaultComicBookYear = '',
         comicBookPublisher: defaultComicBookPublisher = '',
@@ -311,6 +315,7 @@ class WishListForm extends React.Component {
 
     const {
       comicBookTitle = defaultComicBookTitle,
+      comicIssue = defaultComicIssue,
       comicBookVolume = defaultComicBookVolume,
       comicBookYear = defaultComicBookYear,
       comicBookPublisher = defaultComicBookPublisher,
@@ -373,6 +378,19 @@ class WishListForm extends React.Component {
                         name="comicBookTitle"
                         value={comicBookTitle}
                         onChange={this.handleInputChange}
+                      />
+                    </label>
+
+                    <label htmlFor="comicIssue">
+                      Issue
+
+                      <input
+                        id="comicIssue"
+                        className={styles.inputBorder}
+                        type="number"
+                        name="comicIssue"
+                        value={comicIssue}
+                        onChange={event => this.numInputChange(event, 'comicIssue')}
                       />
                     </label>
 
@@ -467,6 +485,7 @@ WishListForm.propTypes = {
   wishlist: PropTypes.shape({
     id: PropTypes.string,
     comicBookTitle: PropTypes.string,
+    comicIssue: PropTypes.number,
     comicBookVolume: PropTypes.number,
     comicBookYear: PropTypes.number,
     comicBookPublisher: PropTypes.string,

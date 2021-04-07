@@ -12,11 +12,11 @@ const app = require('./app');
 
 // set the port to either the one passed from the environment variables or 4000
 // Heroku
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
 // set the port to either the one passed from the environment variables or 4000
 // Node Server
-// const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 // Heroku Server
 // Serve any static files

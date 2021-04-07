@@ -29,6 +29,25 @@ exports.getMessagings = async (req, res) => {
   }
 };
 
+exports.getSentMessagings = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const messagings = await Messagings.findAll({
+      where: { userSent: userId },
+    });
+    // Use for endpoints
+    // const { name } = req.body;
+    // const messagings = await Messagings.findAll({ where: { name } });
+
+    // respond with json of the public questions array
+    res.json(messagings);
+  } catch (e) {
+    // map the errors messages to send them back
+    const errors = e.errors.map(err => err.message);
+    res.status(500).json({ errors });
+  }
+};
+
 // find one messaging by id
 exports.getOneById = async (req, res) => {
   // get the id from the url params
@@ -50,7 +69,7 @@ exports.getOneById = async (req, res) => {
 exports.createMessaging = async (req, res) => {
   // get the name, email, message and userId values from the request body
   const {
-    name, email, message, messageUsersId,
+    name, email, subject, message, messageUsersId, userSent,
   } = req.body;
 
   // const { userId } = req.userId;
@@ -58,7 +77,7 @@ exports.createMessaging = async (req, res) => {
   try {
     // create the item and save the new id
     const newMessaging = await Messagings.create({
-      name, email, message, messageUsersId,
+      name, email, subject, message, messageUsersId, userSent,
     });
 
     // send the new id back to the request
@@ -68,4 +87,37 @@ exports.createMessaging = async (req, res) => {
     const errors = e.errors.map(err => err.message);
     res.status(400).json({ errors });
   }
+};
+
+// update an existing message
+exports.updateMessaging = async (req, res) => {
+  // get the id from the url params
+  const { id } = req.params;
+
+  try {
+    // update the message with the request body
+    const [, [updatedMessagings]] = await Messagings.update(req.body, {
+      // only update the row using the id in the url
+      where: { id },
+      // return the updated row
+      returning: true,
+    });
+
+    // send the updated message back to the front-end
+    res.json(updatedMessagings);
+  } catch (e) {
+    // map the errors messages to send them back
+    const errors = e.errors.map(err => err.message);
+    res.status(400).json({ errors });
+  }
+};
+
+// delete a message
+exports.removeMessaging = async (req, res) => {
+  // get the id from the url params
+  const { id } = req.params;
+  // remove the message
+  await Messagings.destroy({ where: { id } });
+  // send a good status code
+  res.sendStatus(200);
 };

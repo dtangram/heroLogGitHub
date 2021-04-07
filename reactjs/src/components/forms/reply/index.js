@@ -7,7 +7,7 @@ import SuccessDisplay from '../success';
 import styles from './styles.module.css';
 import container from './container';
 
-class ModalMessage extends React.Component {
+class ReplyMessage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,6 @@ class ModalMessage extends React.Component {
       },
     };
 
-    props.fetchMessagings();
     this.handleInputChange = this.handleInputChange.bind(this);
     this.loadData();
   }
@@ -28,8 +27,8 @@ class ModalMessage extends React.Component {
       top: 0,
     });
 
-    const { fetchMessagings, match: { params: { userId } } } = this.props;
-    if (userId) fetchMessagings(userId);
+    const { fetchMessaging, match: { params: { userId } } } = this.props;
+    if (userId) fetchMessaging(userId);
 
     this.inputFocus.focus();
   }
@@ -59,30 +58,52 @@ class ModalMessage extends React.Component {
     // make sure the form doesn't submit with the browser
     event.preventDefault();
     const {
-      createMessaging,
+      // createMessaging,
+      updateMessaging,
       match: {
         params: {
-          id, userId, comicBookTitle, comicIssue, userSent, username, userEmail,
+          messageID, userId, comicBookTitle, userSent, prevMessage, username, userEmail,
         },
       },
     } = this.props;
 
     const { message } = this.state;
 
-    const newSubject = comicIssue !== 'null' ? `${comicBookTitle} #${comicIssue}` : `${comicBookTitle}`;
-
     const isValid = this.validateFields();
 
-    if (!id && isValid && message.length > 9 && message.length < 501) {
-      createMessaging({
+    const subjectcomicBookTitle = comicBookTitle.replace('%23', '#');
+
+    const prevMessageDecode = decodeURIComponent(prevMessage);
+
+    // const currentSentUser = (userId, userSent);
+
+    const replyMess = `${username}: ${message}\n\n${prevMessageDecode}\n\n`;
+
+    console.log('prevMessage:', prevMessageDecode);
+
+    if (isValid && (message.length > 9 && message.length < 501)) {
+      updateMessaging({
+        id: messageID,
         name: username,
         email: userEmail,
-        subject: newSubject,
-        message,
+        subject: subjectcomicBookTitle,
+        message: replyMess,
         messageUsersId: userId,
         userSent,
       }).then(() => this.setState({ successMessage: 'success' }));
     }
+
+    // if (!id && isValid && (message.length > 9 && message.length < 501)) {
+    //   createMessaging({
+    //     id: messageID,
+    //     name: username,
+    //     email: userEmail,
+    //     subject: subjectcomicBookTitle,
+    //     message: replyMess,
+    //     messageUsersId: userId,
+    //     userSent,
+    //   }).then(() => this.setState({ successMessage: 'success' }));
+    // }
 
     window.scrollTo({
       top: 0,
@@ -108,7 +129,7 @@ class ModalMessage extends React.Component {
     const {
       match: {
         params: {
-          comicBookTitle, comicIssue, username, userEmail,
+          comicBookTitle, username, userEmail,
         },
       },
       messaging: {
@@ -124,27 +145,17 @@ class ModalMessage extends React.Component {
       successMessage,
     } = this.state;
 
+    const subjectcomicBookTitle = comicBookTitle.replace('%23', '#');
+
     return (
       <React.Fragment>
         <article id="cbMessage" className={styles.cbWrapper}>
-          {comicIssue !== 'null' ? (
-            <h1>
-              Send Message About
-              <br />
-              {comicBookTitle}
-              &nbsp;
-              #
-              {comicIssue}
-              <figure className={styles.graphic} alt="Small burgandy, rectangle graphic." />
-            </h1>
-          ) : (
-            <h1>
-              Send Message About
-              <br />
-              {comicBookTitle}
-              <figure className={styles.graphic} alt="Small burgandy, rectangle graphic." />
-            </h1>
-          )}
+          <h1>
+            Send Reply About
+            <br />
+            {subjectcomicBookTitle}
+            <figure className={styles.graphic} alt="Small burgandy, rectangle graphic." />
+          </h1>
 
           <article className={styles.cbList}>
             {(formErrors.message.length <= 0) && successMessage === 'success' ? <SuccessDisplay /> : null}
@@ -213,15 +224,7 @@ class ModalMessage extends React.Component {
   }
 }
 
-ModalMessage.propTypes = {
-  fetchMessagings: PropTypes.func.isRequired,
-  messagings: PropTypes.shape({
-    // id: PropTypes.string,
-    name: PropTypes.string,
-    email: PropTypes.string,
-    message: PropTypes.string,
-  }),
-
+ReplyMessage.propTypes = {
   messaging: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -229,14 +232,14 @@ ModalMessage.propTypes = {
     message: PropTypes.string,
   }),
 
-  createMessaging: PropTypes.func.isRequired,
+  // createMessaging: PropTypes.func.isRequired,
+  updateMessaging: PropTypes.func.isRequired,
   fetchMessaging: PropTypes.func.isRequired,
   match: RRPropTypes.match.isRequired,
 };
 
-ModalMessage.defaultProps = {
-  messagings: {},
+ReplyMessage.defaultProps = {
   messaging: {},
 };
 
-export default container(ModalMessage);
+export default container(ReplyMessage);

@@ -16,7 +16,9 @@ import Signin from './components/forms/signin';
 import Home from './components/home';
 import Dashboard from './components/dashboard';
 import ModalMessage from './components/forms/messaging';
+import ReplyMessage from './components/forms/reply';
 import ViewMessages from './components/viewMessages';
+import SentMessages from './components/sentMessages';
 import ComicBookList from './components/dashboard/comicbooklist';
 import ComicBookListIssues from './components/dashboard/comicbooklistissues';
 import CreatePublisher from './components/forms/createpublisher';
@@ -47,8 +49,10 @@ class App extends Component {
           <Switch>
             <PrivateRouteHandler path="/" exact component={Home} />
             <PrivateRouteHandler path="/dashboard/:userId" exact component={Dashboard} />
-            <PrivateRouteHandler path="/forms/messaging/:userId/:comicBookTitle/:username/:userEmail" exact component={ModalMessage} />
+            <PrivateRouteHandler path="/forms/messaging/:userId/:comicBookTitle/:comicIssue/:userSent/:username/:userEmail" exact component={ModalMessage} />
+            <PrivateRouteHandler path="/forms/reply/:messageID/:userId/:comicBookTitle/:prevMessage/:userSent/:username/:userEmail" exact component={ReplyMessage} />
             <PrivateRouteHandler path="/viewMessages/:userId" exact component={ViewMessages} />
+            <PrivateRouteHandler path="/sentMessages/:userId" exact component={SentMessages} />
             <PrivateRouteHandler path="/forms/createpublisher/new/:userId" exact component={CreatePublisher} />
             <PrivateRouteHandler path="/forms/createpublisher/edit/:id" exact component={CreatePublisher} />
             <PrivateRouteHandler path="/dashboard/:pubId/:publisherName/comicbooklist" exact component={ComicBookList} />

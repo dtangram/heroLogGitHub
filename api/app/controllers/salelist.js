@@ -68,7 +68,7 @@ exports.getOneById = async (req, res) => {
 exports.createSaleList = async (req, res) => {
   // get the name, type and userId values from the request body
   const {
-    comicBookTitle, comicBookVolume, comicBookYear, comicBookPublisher, comicBookCover,
+    comicBookTitle, comicIssue, comicBookVolume, comicBookYear, comicBookPublisher, comicBookCover,
     type, saleUsersId,
   } = req.body;
 
@@ -78,6 +78,7 @@ exports.createSaleList = async (req, res) => {
     // create the item and save the new id
     const newSaleList = await SaleLists.create({
       comicBookTitle,
+      comicIssue,
       comicBookVolume,
       comicBookYear,
       comicBookPublisher,

@@ -62,7 +62,7 @@ exports.createComicBook = async (req, res) => {
   // get title, author, penciler, coverartist, inker, volume, year, type
   // and cbTitleId values from the request body
   const {
-    title, author, penciler, coverartist, inker, volume, year,
+    title, comicIssue, author, penciler, coverartist, inker, volume, year,
     comicBookCover, type, comicbooktitlerelId,
   } = req.body;
 
@@ -70,6 +70,7 @@ exports.createComicBook = async (req, res) => {
     // create the item and save the new id
     const newComicBooks = await ComicBooks.create({
       title,
+      comicIssue,
       author,
       penciler,
       coverartist,

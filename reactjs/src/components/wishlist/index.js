@@ -126,6 +126,12 @@ class WishList extends React.Component {
                           </p>
 
                           <p>
+                            <span>Issue:</span>
+                            &nbsp;
+                            {wishList.comicIssue}
+                          </p>
+
+                          <p>
                             <span>Volume:</span>
                             &nbsp;
                             {wishList.comicBookVolume}
@@ -177,6 +183,7 @@ WishList.propTypes = {
   wishlists: PropTypes.shape({
     id: PropTypes.string,
     comicBookTitle: PropTypes.string,
+    comicIssue: PropTypes.number,
     comicBookVolume: PropTypes.number,
     comicBookYear: PropTypes.number,
     comicBookPublisher: PropTypes.string,

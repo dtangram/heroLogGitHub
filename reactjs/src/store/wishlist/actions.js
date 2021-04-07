@@ -75,6 +75,7 @@ export const updateWishList = wishlist => ({
   ],
   callAPI: () => API.put(`/wishlist/${wishlist.id}`, {
     comicBookTitle: wishlist.comicBookTitle,
+    comicIssue: wishlist.comicIssue,
     comicBookVolume: wishlist.comicBookVolume,
     comicBookYear: wishlist.comicBookYear,
     comicBookPublisher: wishlist.comicBookPublisher,

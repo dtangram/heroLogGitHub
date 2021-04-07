@@ -74,6 +74,7 @@ export const updateComicBook = comicbook => ({
   ],
   callAPI: () => API.put(`/comicbook/${comicbook.id}`, {
     title: comicbook.title,
+    comicIssue: comicbook.comicIssue,
     author: comicbook.author,
     penciler: comicbook.penciler,
     coverartist: comicbook.coverartist,

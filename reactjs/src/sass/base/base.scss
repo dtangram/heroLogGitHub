@@ -1926,13 +1926,13 @@ while in CSS Module */
           background: #AECEAB;
           border-radius: 15px;
           display: flex;
-          height: 300px;
+          height: 340px;
           left: 5%;
           margin-bottom: 0;
-          padding: 30px;
+          padding: 23px;
           position: absolute;
           top: -27px;
-          width: 215px;
+          width: 230px;
           z-index: 10;
 
           @include mq(small){
@@ -1954,7 +1954,7 @@ while in CSS Module */
           border-radius: 15px;
           display: inline-block;
           font-size: 1.6rem;
-          height: 250px;
+          height: 290px;
           line-height: 40px;
           margin-bottom: 30px;
           overflow-y: auto;
@@ -1974,15 +1974,18 @@ while in CSS Module */
         .comicWrap .paraWrap::-webkit-scrollbar-track{
           -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #F5F5F5;
-          border-radius: 10px; }
+          border-radius: 10px;
+        }
 
         .comicWrap .paraWrap::-webkit-scrollbar{
           width: 10px;
-          background-color: #025d88; }
+          background-color: #025d88;
+        }
 
         .comicWrap .paraWrap::-webkit-scrollbar-thumb{
           border-radius: 10px;
-          background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #3E1142), color-stop(0.72, #3E1142), color-stop(0.86, #3E1142)); }
+          background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #3E1142), color-stop(0.72, #3E1142), color-stop(0.86, #3E1142));
+        }
 
 
         .comicWrap .paraWrap > p{
@@ -2207,12 +2210,12 @@ while in CSS Module */
 
     .comicWrap{
       .comicImgWrap{
-        height: 400px;
+        height: 417px;
         width: 281px;
       }
 
       .paraWrap{
-        height: 350px;
+        height: 370px;
 
         @include mq(medium){
           padding-left: 65%;
@@ -2220,6 +2223,172 @@ while in CSS Module */
 
         @include mq(small){
           padding: 16px 5%;
+        }
+      }
+    }
+  }
+}
+
+#cbVeiwMessage{
+  > .cbList > section{
+    display: inline-block;
+  }
+
+  .cbList .viewMessage{
+    align-items: center;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* height: auto; */
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 20px 2%;
+    text-align: left;
+    /* width: 80%; */
+
+    article{
+      background: #770422;
+      border-radius: 15px;
+      color: #2B2B2B;
+
+      display: block;
+
+      margin-bottom: 30px;
+      padding: 16px 1%;
+
+      p{
+        color: #FFF;
+        font-size: 1.8rem;
+        line-height: 23px;
+        margin-bottom: 20px;
+      }
+
+      p span{
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      > p:nth-child(5){
+        background: #FFF;
+        color: #2B2B2B;
+        font-size: 1.8rem;
+        height: 200px;
+        margin-bottom: 30px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 3% 2%;
+        white-space: pre-line;
+        width: 350px;
+      }
+
+      > p:nth-child(5)::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+        border-radius: 10px;
+      }
+
+      > p:nth-child(5)::-webkit-scrollbar{
+        width: 10px;
+        background-color: #025d88;
+      }
+
+      > p:nth-child(5)::-webkit-scrollbar-thumb{
+        border-radius: 10px;
+        background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #3E1142), color-stop(0.72, #3E1142), color-stop(0.86, #3E1142));
+      }
+
+      > section{
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 0;
+        text-align: left;
+
+        .replyStyle, button{
+          align-items: center;
+          display: flex;
+          flex-direction: row;
+        }
+
+        .replyStyle p, .replyStyle span, .deleteStyle p{
+          margin: 0;
+          padding: 0;
+        }
+
+        .replyStyle p, .replyStyle span, .deleteStyle p, .replyStyle figure :nth-child(1),
+        .deleteStyle figure :nth-child(1){
+          font-size: 1.7rem;
+        }
+
+        .replyStyle p, .replyStyle figure, .deleteStyle figure, .deleteStyle p{
+          line-height: normal;
+        }
+
+        .replyStyle{
+          align-items: center;
+          background: transparent;
+          margin-bottom: 0;
+          min-height: auto;
+          padding-top: 0;
+          width: auto;
+        }
+
+        .replyStyle figure{
+          margin: 0 10px 0 0;
+          padding: 0;
+        }
+
+        .replyStyle a:hover::after{
+          background: #AECEAB;
+          width: 80%;
+        }
+
+        .replyStyle figure :nth-child(1), .replyStyle span{
+          color: #AECEAB;
+        }
+
+        button{
+          background: #AECEAB;
+          border: 1px solid #D0D2D3;
+          border-radius: 4px;
+          color: #770422;
+          cursor: pointer;
+          float: right;
+          font-size: 1.5rem;
+          justify-content: center;
+          margin: 0;
+          padding: 5px 0;
+          // text-align: center;
+          width: 100px;
+
+          @include mq(small){
+            font-size: 1.6rem;
+          }
+        }
+
+        button:hover, button:hover p{
+          color: #AECEAB;
+        }
+
+        button:hover{
+          background: #2B2B2B;
+        }
+
+        button figure, button p{
+          line-height: normal;
+        }
+
+        button figure{
+          margin: 0 10px 0 0;
+          padding: 0;
+        }
+
+        button p{
+          color: #770422;
+          margin: 0;
+          padding: 0;
         }
       }
     }

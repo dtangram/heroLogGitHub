@@ -109,6 +109,12 @@ class Sale extends React.Component {
                           </p>
 
                           <p>
+                            <span>Issue:</span>
+                            &nbsp;
+                            {sale.comicIssue}
+                          </p>
+
+                          <p>
                             <span>Volume:</span>
                             &nbsp;
                             {sale.comicBookVolume}
@@ -160,6 +166,7 @@ Sale.propTypes = {
   sales: PropTypes.shape({
     id: PropTypes.string,
     comicBookTitle: PropTypes.string,
+    comicIssue: PropTypes.number,
     comicBookVolume: PropTypes.number,
     comicBookYear: PropTypes.number,
     comicBookPublisher: PropTypes.string,

@@ -115,6 +115,12 @@ class ComicBookListIssues extends React.Component {
                           </p>
 
                           <p>
+                            <span>Issue:</span>
+                            &nbsp;
+                            {comicbookListProp.comicIssue}
+                          </p>
+
+                          <p>
                             <span>Author:</span>
                             &nbsp;
                             {comicbookListProp.author}
@@ -184,6 +190,7 @@ ComicBookListIssues.propTypes = {
   comicbooklistissues: PropTypes.shape({
     // id: PropTypes.string,
     title: PropTypes.string,
+    comicIssue: PropTypes.number,
     author: PropTypes.string,
     penciler: PropTypes.string,
     coverartist: PropTypes.string,

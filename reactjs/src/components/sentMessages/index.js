@@ -3,10 +3,10 @@ import { Link as RRLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
 import { BeatLoader } from 'react-spinners';
-import SendIcon from '@material-ui/icons/Send';
+import MessageIcon from '@material-ui/icons/Message';
 import DeleteIcon from '@material-ui/icons/Delete';
-import ReplyIcon from '@material-ui/icons/Reply';
-import Link from '../../link';
+// import ReplyIcon from '@material-ui/icons/Reply';
+// import Link from '../../link';
 import Empty from '../empty/empty';
 import '../../css/main.css';
 // import styles from './styles.module.css';
@@ -14,22 +14,22 @@ import styles from './styles.module.css';
 import container from './container';
 import logo from '../../img/logo.png';
 
-class ViewMessages extends React.Component {
+class SentMessages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     };
 
-    props.fetchMessagings();
+    props.fetchMessagingsSent();
   }
 
   componentDidMount() {
     const {
-      fetchMessagings, fetchUser, match: { params: { userId } },
+      fetchMessagingsSent, fetchUser, match: { params: { userId } },
     } = this.props;
     if (userId) {
-      fetchMessagings(userId);
       fetchUser(userId);
+      fetchMessagingsSent(userId);
     }
 
     window.scrollTo({
@@ -44,7 +44,7 @@ class ViewMessages extends React.Component {
   }
 
   render() {
-    const { messagings, signups, match: { params: { userId } } } = this.props;
+    const { messagings, match: { params: { userId } } } = this.props;
     const currentMessagingsData = messagings[userId] || {};
     const { allIds = [], byId = {}, isLoading } = currentMessagingsData;
 
@@ -59,14 +59,14 @@ class ViewMessages extends React.Component {
       <React.Fragment>
         <article id="cbVeiwMessage">
           <h1>
-            Your Messages
+            Your Sent Messages
             <div className="graphic" alt="Small burgandy, rectangle graphic." />
           </h1>
 
           <article className={styles.viewMess}>
-            <RRLink to={`/sentMessages/${userId}`}>
-              <figure><SendIcon /></figure>
-              <p className="link">View Sent Messages</p>
+            <RRLink to={`/viewMessages/${userId}`}>
+              <figure><MessageIcon /></figure>
+              <p className="link">View Messages</p>
             </RRLink>
           </article>
 
@@ -121,18 +121,24 @@ class ViewMessages extends React.Component {
                         </p>
 
                         <section>
-                          <section className="replyStyle">
-                            <figure><ReplyIcon /></figure>
-
-                            {signups.map(user => (
-                              <p className={styles.link} key={user.id}>
-                                <Link
-                                  url={`/forms/reply/${fetchMessages.id}/${fetchMessages.userSent}/${encodeURIComponent(fetchMessages.subject)}/${encodeURIComponent(fetchMessages.message)}/${user.id}/${user.username}/${user.email}`}
-                                  title="Reply"
-                                />
-                              </p>
-                            ))}
-                          </section>
+                          {
+                            // <section className="replyStyle">
+                            //   <figure><ReplyIcon /></figure>
+                            //
+                            //   {signups.map(user => (
+                            //     <p className={styles.link} key={user.id}>
+                            //       <Link
+                            //         url={`/forms/reply/${fetchMessages.id}/
+                                       // ${fetchMessages.userSent}/
+                                       // ${encodeURIComponent(fetchMessages.subject)}/
+                                       // ${encodeURIComponent(fetchMessages.message)}/
+                                       // ${user.id}/${user.username}/${user.email}`}
+                            //         title="Reply"
+                            //       />
+                            //     </p>
+                            //   ))}
+                            // </section>
+                          }
 
                           <button className={styles.deleteStyle} type="submit" onClick={() => this.delete(fetchMessages.id)}>
                             <figure><DeleteIcon /></figure>
@@ -151,8 +157,8 @@ class ViewMessages extends React.Component {
   }
 }
 
-ViewMessages.propTypes = {
-  fetchMessagings: PropTypes.func.isRequired,
+SentMessages.propTypes = {
+  fetchMessagingsSent: PropTypes.func.isRequired,
   messagings: PropTypes.shape({
     // id: PropTypes.string,
     name: PropTypes.string,
@@ -170,22 +176,14 @@ ViewMessages.propTypes = {
   }),
 
   fetchUser: PropTypes.func.isRequired,
-  signups: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      username: PropTypes.string,
-      email: PropTypes.string,
-    }),
-  ),
 
   deleteMessaging: PropTypes.func.isRequired,
   match: RRPropTypes.match.isRequired,
 };
 
-ViewMessages.defaultProps = {
+SentMessages.defaultProps = {
   messagings: {},
   messaging: {},
-  signups: [],
 };
 
-export default container(ViewMessages);
+export default container(SentMessages);

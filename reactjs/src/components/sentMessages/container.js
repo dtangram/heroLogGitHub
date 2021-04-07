@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  fetchMessagings, fetchMessaging, deleteMessaging,
+  fetchMessagingsSent, fetchMessaging, deleteMessaging,
 } from '../../store/messagings/actions';
 import {
   fetchUser,
@@ -26,7 +26,7 @@ function mapStateToProps(state, props) {
 
 // set the actions we need in this component
 const mapDispatchToProps = {
-  fetchMessagings, fetchMessaging, deleteMessaging, fetchUser,
+  fetchMessagingsSent, fetchMessaging, deleteMessaging, fetchUser,
 };
 
 export default connect(

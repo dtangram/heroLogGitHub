@@ -106,7 +106,7 @@ class Home extends React.Component {
             <article className={styles.viewMess}>
               <RRLink to={`/viewMessages/${userId}`}>
                 <figure><MessageIcon /></figure>
-                <p className="link">View Your Messages</p>
+                <p className="link">View Messages</p>
               </RRLink>
             </article>
 
@@ -139,7 +139,20 @@ class Home extends React.Component {
                         <img src={saleHome.comicBookCover} alt={saleHome.comicBookTitle} />
                       </figure>
 
-                      <h3>{saleHome.comicBookTitle}</h3>
+                      {
+                        // <h3>{saleHome.comicBookTitle}</h3>
+                      }
+
+                      {saleHome.comicIssue ? (
+                        <h3>
+                          {saleHome.comicBookTitle}
+                          &nbsp;
+                          #
+                          {saleHome.comicIssue}
+                        </h3>
+                      ) : (
+                        <h3>{saleHome.comicBookTitle}</h3>
+                      )}
 
                       {
                         // {user && (
@@ -152,7 +165,7 @@ class Home extends React.Component {
                       }
 
                       <article>
-                        <RRLink to={`/forms/messaging/${saleHome.saleUsersId}/${saleHome.comicBookTitle}/${user.username}/${user.email}`}>
+                        <RRLink to={`/forms/messaging/${saleHome.saleUsersId}/${saleHome.comicBookTitle}/${saleHome.comicIssue}/${user.id}/${user.username}/${user.email}`}>
                           <figure className="link"><QuestionAnswerIcon /></figure>
                         </RRLink>
                         <p>Send a message to the owner of this comic book.</p>

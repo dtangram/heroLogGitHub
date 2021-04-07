@@ -41,6 +41,7 @@ const sendError = (res, status, message) => (error) => {
 // router.get('/', messagingCtrl.getUserMessagings);
 
 router.get('/signups/:userId', messagingCtrl.getMessagings);
+router.get('/signupsMessSent/:userId', messagingCtrl.getSentMessagings);
 
 // POST /messagings
 router.post('/', [
@@ -64,8 +65,20 @@ router.post('/', [
   }
 });
 
-// GET /comicbooktitles/:id
+// GET /messagings/:id
 router.get('/:id', messagingCtrl.getOneById);
+
+// PUT /messagings/:id
+router.put('/:id', [
+  validationCtrl.validate('editMessaging'),
+  messagingCtrl.updateMessaging,
+]);
+
+// DELETE /messagings/:id
+router.delete('/:id', [
+  validationCtrl.validate('deleteMessagings'),
+  messagingCtrl.removeMessaging,
+]);
 
 // export the route from this file
 module.exports = router;

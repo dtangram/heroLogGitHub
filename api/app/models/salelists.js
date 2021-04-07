@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
 
+    comicIssue: {
+      type: DataTypes.INTEGER,
+    },
+
     comicBookVolume: {
       type: DataTypes.INTEGER,
       validate: {

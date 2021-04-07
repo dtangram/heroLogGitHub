@@ -75,6 +75,7 @@ export const updateSale = sale => ({
   ],
   callAPI: () => API.put(`/salelist/${sale.id}`, {
     comicBookTitle: sale.comicBookTitle,
+    comicIssue: sale.comicIssue,
     comicBookVolume: sale.comicBookVolume,
     comicBookYear: sale.comicBookYear,
     comicBookPublisher: sale.comicBookPublisher,

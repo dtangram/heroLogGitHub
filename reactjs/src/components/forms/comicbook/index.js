@@ -19,6 +19,7 @@ class ComicBook extends React.Component {
     super(props);
     this.state = {
       title: '',
+      comicIssue: undefined,
       author: undefined,
       penciler: undefined,
       coverartist: undefined,
@@ -240,7 +241,7 @@ class ComicBook extends React.Component {
       // history,
     } = this.props;
     const {
-      title, author, penciler, coverartist, inker, volume, year,
+      title, comicIssue, author, penciler, coverartist, inker, volume, year,
       comicBookCover, type,
     } = this.state;
 
@@ -250,6 +251,7 @@ class ComicBook extends React.Component {
       updateComicBook({
         id,
         title,
+        comicIssue,
         author,
         penciler,
         coverartist,
@@ -262,6 +264,7 @@ class ComicBook extends React.Component {
     } else if (!id && title.length >= 1 && type) {
       createComicBook({
         title,
+        comicIssue,
         author,
         penciler,
         coverartist,
@@ -349,6 +352,7 @@ class ComicBook extends React.Component {
       comicbook: {
         id,
         title: defaultTitle = '',
+        comicIssue: defaultComicIssue = '',
         author: defaultAuthor = '',
         penciler: defaultPenciler = '',
         coverartist: defaultCoverArtist = '',
@@ -363,6 +367,7 @@ class ComicBook extends React.Component {
 
     const {
       title = defaultTitle,
+      comicIssue = defaultComicIssue,
       author = defaultAuthor,
       penciler = defaultPenciler,
       coverartist = defaultCoverArtist,
@@ -424,11 +429,23 @@ class ComicBook extends React.Component {
                         ref={(input) => { this.inputFocus = input; }}
                         id="title"
                         className={styles.inputBorder}
-                        placeHolder="Example: Amazing Spider-Man #300"
                         type="text"
                         name="title"
                         value={title}
                         onChange={this.handleInputChange}
+                      />
+                    </label>
+
+                    <label htmlFor="comicIssue">
+                      Issue
+
+                      <input
+                        id="comicIssue"
+                        className={styles.inputBorder}
+                        type="number"
+                        name="comicIssue"
+                        value={comicIssue}
+                        onChange={event => this.numInputChange(event, 'comicIssue')}
                       />
                     </label>
 
@@ -564,6 +581,7 @@ ComicBook.propTypes = {
   comicbook: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
+    comicIssue: PropTypes.number,
     author: PropTypes.string,
     penciler: PropTypes.string,
     coverartist: PropTypes.string,

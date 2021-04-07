@@ -10,6 +10,12 @@ import {
   ADD_MESSAGING_PENDING,
   ADD_MESSAGING_SUCCESS,
   ADD_MESSAGING_ERROR,
+  UPDATE_MESSAGING_PENDING,
+  UPDATE_MESSAGING_SUCCESS,
+  UPDATE_MESSAGING_ERROR,
+  DELETE_MESSAGE_PENDING,
+  DELETE_MESSAGE_SUCCESS,
+  DELETE_MESSAGE_ERROR,
 } from '../actionTypes';
 
 const initialState = {
@@ -129,6 +135,43 @@ function messagingSuccess(state, action) {
   };
 }
 
+function messagingSuccessUpdate(state, action) {
+  const currentData = state.byId[action.payload.id] || {};
+
+  return {
+    ...state,
+    byId: {
+      ...state.byId,
+      [action.payload.id]: {
+        isLoading: false,
+        error: null,
+        loadedAt: Date.now(),
+        // Merging the name (currentData.data) with its id (action.data) into one object
+        data: Object.assign({}, currentData.data, action.data),
+        // data: action.data,
+      },
+    },
+    allIds: [...new Set([...state.allIds, action.payload.id])],
+  };
+}
+
+function messagingSuccessDelete(state, action) {
+  const { id } = action.payload.id;
+  const allIds = [...state.allIds];
+  const byId = { ...state.byId };
+
+  // remove id from allIds array after this id has been deleted
+  const index = allIds.indexOf(id);
+  if (index !== -1) {
+    allIds.splice(index, 1);
+  }
+
+  // remove id related the data from the byId object
+  delete byId[id];
+
+  return { ...state, allIds, byId };
+}
+
 function messagingError(state, action) {
   // clear loading and set error
   return {
@@ -154,4 +197,10 @@ export default createReducer(initialState, {
   [ADD_MESSAGING_PENDING]: messagingPending,
   [ADD_MESSAGING_SUCCESS]: messagingSuccess,
   [ADD_MESSAGING_ERROR]: messagingError,
+  [UPDATE_MESSAGING_PENDING]: messagingPending,
+  [UPDATE_MESSAGING_SUCCESS]: messagingSuccessUpdate,
+  [UPDATE_MESSAGING_ERROR]: messagingError,
+  [DELETE_MESSAGE_PENDING]: messagingsPending,
+  [DELETE_MESSAGE_SUCCESS]: messagingSuccessDelete,
+  [DELETE_MESSAGE_ERROR]: messagingError,
 });

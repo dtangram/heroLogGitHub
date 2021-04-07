@@ -68,7 +68,7 @@ exports.getOneById = async (req, res) => {
 exports.createWishList = async (req, res) => {
   // get the name, type and userId values from the request body
   const {
-    comicBookTitle, comicBookVolume, comicBookYear, comicBookPublisher,
+    comicBookTitle, comicIssue, comicBookVolume, comicBookYear, comicBookPublisher,
     comicBookCover, type, wishUsersId,
   } = req.body;
 
@@ -78,6 +78,7 @@ exports.createWishList = async (req, res) => {
     // create the item and save the new id
     const newWishList = await WishLists.create({
       comicBookTitle,
+      comicIssue,
       comicBookVolume,
       comicBookYear,
       comicBookPublisher,

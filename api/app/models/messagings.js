@@ -23,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
 
+    subject: {
+      type: DataTypes.STRING,
+    },
+
+    userSent: {
+      type: DataTypes.INTEGER,
+    },
+
     message: {
       type: DataTypes.STRING,
       validate: {
