@@ -6,10 +6,10 @@ const API = axios.create({
   // baseURL: process.env.DATABASE_URL || 'https://endpoint.yourcode.app/dtangram/api',
 
   // For Heroku
-  // baseURL: process.env.DATABASE_URL || 'http://localhost:5000',
+  baseURL: process.env.API_URL || 'http://localhost:5000',
 
   // For Heroku Staging
-  baseURL: 'https://herolog.herokuapp.com/',
+  // baseURL: 'https://herolog.herokuapp.com/',
 
   // For Heroku Production
   // baseURL: 'https://hero-log-production.herokuapp.com/',
